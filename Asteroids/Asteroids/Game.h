@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDL.h"
+#include "Entity.h"
 #include <iostream>
 
 class Game
@@ -21,5 +22,7 @@ private:
 	bool isGameRunning;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	Player* _player;
 };
 

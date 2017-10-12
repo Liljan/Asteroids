@@ -32,6 +32,10 @@ void Game::init(const char * title, int x, int y, int width, int height, bool fu
 		}
 
 		isGameRunning = true;
+
+		// bonus
+		_player = new Player(300.0f, 300.0f, 50.0f);
+
 	}
 	else
 	{
@@ -58,6 +62,7 @@ void Game::handleEvents()
 
 void Game::update(float dt)
 {
+	_player->Move(dt);
 }
 
 void Game::render()
@@ -66,6 +71,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 
 	// Add graphics to render...
+	_player->Draw(renderer);
 
 	// End of graphics to render...
 
