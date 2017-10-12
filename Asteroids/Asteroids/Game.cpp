@@ -56,12 +56,13 @@ void Game::handleEvents()
 	}
 }
 
-void Game::update()
+void Game::update(float dt)
 {
 }
 
 void Game::render()
 {
+	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderClear(renderer);
 
 	// Add graphics to render...
