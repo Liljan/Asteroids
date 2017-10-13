@@ -8,7 +8,7 @@
 enum class State
 {
 	INTRO,
-	GAME,
+	GAMEPLAY,
 	HI_SCORE
 };
 
@@ -43,8 +43,8 @@ private:
 
 	// GameStates
 	Intro* m_IntroState;
-	GameState* m_GameplayState;
-	GameState* m_HighScoreState;
+	Gameplay* m_GameplayState;
+	HighScore* m_HighScoreState;
 
 	GameState* m_currentState;
 };

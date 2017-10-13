@@ -1,13 +1,12 @@
 #include "GameEngine.h"
 
 #include "Intro.h"
+#include "GamePlay.h"
 
 GameEngine::GameEngine()
 {
 	m_IntroState = new Intro();
-	m_IntroState->Init(this, m_Renderer);
-
-	m_currentState = m_IntroState;
+	m_GameplayState = new Gameplay();
 }
 
 
@@ -39,6 +38,10 @@ void GameEngine::Init(const char * title, int x, int y, int width, int height, b
 		}
 
 		// Init Game States
+
+		m_IntroState->Init(this, m_Renderer);
+		m_GameplayState->Init(this, m_Renderer);
+		m_currentState = m_IntroState;
 
 		SetRunning(true);
 	}
@@ -75,20 +78,12 @@ void GameEngine::HandleEvents()
 
 void GameEngine::Update(float dt)
 {
-
+	m_currentState->Update(dt);
 }
 
 void GameEngine::Render()
 {
-	SDL_SetRenderDrawColor(m_Renderer, 0x00, 0x00, 0x00, 0xFF);
-	SDL_RenderClear(m_Renderer);
-
-	// Add graphics to render...
-
-	// End of graphics to render...
-
-	SDL_RenderPresent(m_Renderer);
-
+	m_currentState->Render();
 }
 
 void GameEngine::SetState(State gameState)
@@ -96,8 +91,10 @@ void GameEngine::SetState(State gameState)
 	switch (gameState)
 	{
 	case State::INTRO:
+		m_currentState = m_IntroState;
 		break;
-	case State::GAME:
+	case State::GAMEPLAY:
+		m_currentState = m_GameplayState;
 		break;
 	case State::HI_SCORE:
 		break;

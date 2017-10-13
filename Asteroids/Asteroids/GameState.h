@@ -24,9 +24,9 @@ protected:
 	GameState() {};
 
 	// For state change
-	GameEngine* _gameEngine;
+	GameEngine* m_GameEngine;
 
 	// For rendering
-	SDL_Renderer* _renderer;
+	SDL_Renderer* m_Renderer;
 };
 
