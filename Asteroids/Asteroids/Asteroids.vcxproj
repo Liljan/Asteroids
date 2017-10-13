@@ -132,12 +132,14 @@
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Intro.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Intro.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
