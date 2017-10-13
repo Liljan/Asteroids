@@ -7,8 +7,8 @@ public:
 	Entity();
 	virtual ~Entity();
 
-	float GetX() { return m_X; }
-	float GetY() { return m_Y; }
+	float GetX() { return m_x; }
+	float GetY() { return m_y; }
 
 	void SetPosition(float x, float y);
 
@@ -16,7 +16,7 @@ public:
 	virtual void Draw(SDL_Renderer* renderer) = 0;
 
 protected:
-	float m_X, m_Y;
+	float m_x, m_y;
 };
 
 class Player : public Entity
@@ -25,15 +25,14 @@ public:
 	Player(float x, float y, float speed);
 	~Player() {};
 
-	float GetVx() { return m_Vx; }
+	float GetVx() { return m_vx; }
 	void Move(float dt);
 	void Draw(SDL_Renderer* renderer);
 
 private:
-	float m_Speed;
-	float m_Vx, m_Vy;
+	float m_speed;
+	float m_vx, m_vy;
 
 	// Graphics
-	SDL_Color _color = { 0,255,0,255 };
-	float sc = 15.0f;
+	SDL_Color m_color = { 0,255,0,255 };
 };

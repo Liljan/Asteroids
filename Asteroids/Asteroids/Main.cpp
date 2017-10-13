@@ -1,30 +1,30 @@
 #include "SDL.h"
-#include "Game.h"
+#include "GameEngine.h"
 
-Game* game = nullptr;
+GameEngine* gameEngine = nullptr;
 
 int main(int argc, char* argv[])
 {
 	int currentFrameTime, lastFrameTime = 0;
 	float dt;
 
-	game = new Game();
-	game->init("Assdroids", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, false);
+	gameEngine = new GameEngine();
+	gameEngine->Init("Assdroids", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, false);
 
-	while (game->isRunning())
+	while (gameEngine->IsRunning())
 	{
 		currentFrameTime = SDL_GetTicks();
 		dt = (currentFrameTime - lastFrameTime) * 0.001f;
 
-		game->handleEvents();
-		game->update(dt);
-		game->render();
+		gameEngine->HandleEvents();
+		gameEngine->Update(dt);
+		gameEngine->Render();
 
 		lastFrameTime = SDL_GetTicks();
 	}
 
-	game->clean();
-	delete game;
+	gameEngine->Clean();
+	delete gameEngine;
 
 	return 0;
 }

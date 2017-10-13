@@ -13,8 +13,8 @@ Entity::~Entity() { }
 ***************************************************/
 void Entity::SetPosition(float x, float y)
 {
-	m_X = x;
-	m_Y = y;
+	m_x = x;
+	m_y = y;
 }
 
 // ---------- Player specific methods---------- //
@@ -24,25 +24,25 @@ void Entity::SetPosition(float x, float y)
 Player::Player(float x, float y, float speed)
 {
 	// Set up position properties
-	m_X = x;
-	m_Y = y;
+	m_x = x;
+	m_y = y;
 
 	// Set up movement properties;
-	m_Vx = 0.0f;
-	m_Speed = speed;
+	m_vx = 0.0f;
+	m_speed = speed;
 }
 
 /* Movement
 ***************************************************/
 void Player::Move(float dt)
 {
-	m_X += m_Vx * dt;
+	m_x += m_vx * dt;
 }
 
 void Player::Draw(SDL_Renderer * renderer)
 {
 	//float scaleFactor = 10.0f;
-	SDL_SetRenderDrawColor(renderer, _color.r, _color.g, _color.b, _color.a);
+	SDL_SetRenderDrawColor(renderer, m_color.r, m_color.g, m_color.b, m_color.a);
 
 	//SDL_RenderDrawLine(renderer, 0, 0, tics, tics);
 }

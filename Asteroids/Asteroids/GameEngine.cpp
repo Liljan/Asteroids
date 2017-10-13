@@ -1,15 +1,15 @@
-#include "Game.h"
+#include "GameEngine.h"
 
-Game::Game()
+GameEngine::GameEngine()
 {
 }
 
 
-Game::~Game()
+GameEngine::~GameEngine()
 {
 }
 
-void Game::init(const char * title, int x, int y, int width, int height, bool fullScreen)
+void GameEngine::Init(const char * title, int x, int y, int width, int height, bool fullScreen)
 {
 	int flags = 0;
 
@@ -31,20 +31,16 @@ void Game::init(const char * title, int x, int y, int width, int height, bool fu
 			std::cout << "Renderer created" << std::endl;
 		}
 
-		isGameRunning = true;
-
-		// bonus
-		_player = new Player(300.0f, 300.0f, 50.0f);
-
+		SetRunning(true);
 	}
 	else
 	{
 		std::cout << "Error in initialization." << std::endl;
-		isGameRunning = false;
+		SetRunning(false);
 	}
 }
 
-void Game::handleEvents()
+void GameEngine::HandleEvents()
 {
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -52,7 +48,7 @@ void Game::handleEvents()
 	switch (event.type)
 	{
 	case SDL_QUIT:
-		isGameRunning = false;
+		SetRunning(false);
 		break;
 
 	default:
@@ -60,18 +56,17 @@ void Game::handleEvents()
 	}
 }
 
-void Game::update(float dt)
+void GameEngine::Update(float dt)
 {
-	_player->Move(dt);
+
 }
 
-void Game::render()
+void GameEngine::Render()
 {
 	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderClear(renderer);
 
 	// Add graphics to render...
-	_player->Draw(renderer);
 
 	// End of graphics to render...
 
@@ -79,7 +74,12 @@ void Game::render()
 
 }
 
-void Game::clean()
+void GameEngine::SetState(GameState * state)
+{
+	m_CurrentGameState = state;
+}
+
+void GameEngine::Clean()
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
