@@ -32,9 +32,9 @@ int main(int argc, char* argv[])
 		gameEngine->Update(dt);
 		gameEngine->Render();
 
-		SDL_Delay(FPS_MS);
-
 		lastFrameTime = SDL_GetTicks();
+
+		SDL_Delay(FPS_MS);
 	}
 
 	gameEngine->Clean();

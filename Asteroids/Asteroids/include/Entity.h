@@ -15,7 +15,7 @@ public:
 	virtual void Draw(SDL_Renderer* renderer) = 0;
 
 protected:
-	glm::vec2 _position;
+	glm::vec3 _position;
 };
 
 class Player : public Entity
@@ -32,9 +32,13 @@ public:
 
 private:
 	glm::vec2 _velocity;
+	float angle = 0.0f;
+
+	// Transform: position, rotation
+	glm::mat4 pos_matrix, rot_matrix, transform_matrix;
 
 	// Graphics
 	SDL_Color m_color = { 0,255,0,255 };
-	glm::vec2 m_Points[3];
+	glm::vec4 m_Points[3];
 	float scale = 50.0f;
 };

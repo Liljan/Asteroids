@@ -3,7 +3,7 @@
 GameplayState::GameplayState()
 {
 	m_Player = Player();
-	m_Player.Init(300,300,10);
+	m_Player.Init(600,300,10);
 }
 
 
@@ -51,6 +51,7 @@ void GameplayState::InputEvent(int mod, int state, int key)
 
 void GameplayState::Update(float dt)
 {
+	m_Player.Move(dt);
 }
 
 void GameplayState::Render()
