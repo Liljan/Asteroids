@@ -1,5 +1,7 @@
 #include "Entity.h"
 
+#include "gtx\transform.hpp"
+
 // ---------- Entity base class ---------- //
 
 /* Default destructor
@@ -13,8 +15,7 @@ Entity::~Entity() { }
 ***************************************************/
 void Entity::SetPosition(float x, float y)
 {
-	m_x = x;
-	m_y = y;
+	_position = glm::vec2(x, y);
 }
 
 // ---------- Player specific methods---------- //
@@ -24,19 +25,24 @@ void Entity::SetPosition(float x, float y)
 Player::Player(float x, float y, float speed)
 {
 	// Set up position properties
-	m_x = x;
-	m_y = y;
+	_position = glm::vec2(x, y);
+}
 
-	// Set up movement properties;
-	m_vx = 0.0f;
-	m_speed = speed;
+void Player::Init(float x, float y, float maxSpeed)
+{
+	// setup graphics
+	m_Points[0] = glm::vec2(-scale, scale);
+	m_Points[1] = glm::vec2(scale, scale);
+	m_Points[2] = glm::vec2(0, -scale);
+
+	SetPosition(x, y);
 }
 
 /* Movement
 ***************************************************/
 void Player::Move(float dt)
 {
-	m_x += m_vx * dt;
+	
 }
 
 void Player::Draw(SDL_Renderer * renderer)
@@ -44,5 +50,15 @@ void Player::Draw(SDL_Renderer * renderer)
 	//float scaleFactor = 10.0f;
 	SDL_SetRenderDrawColor(renderer, m_color.r, m_color.g, m_color.b, m_color.a);
 
-	//SDL_RenderDrawLine(renderer, 0, 0, tics, tics);
+	SDL_RenderDrawLine(renderer,
+		_position.x + m_Points[0].x, _position.y + m_Points[0].y,
+		_position.x + m_Points[1].x, _position.y + m_Points[1].y);
+
+	SDL_RenderDrawLine(renderer,
+		_position.x + m_Points[1].x, _position.y + m_Points[1].y,
+		_position.x + m_Points[2].x, _position.y + m_Points[2].y);
+
+	SDL_RenderDrawLine(renderer,
+		_position.x + m_Points[2].x, _position.y + m_Points[2].y,
+		_position.x + m_Points[0].x, _position.y + m_Points[0].y);
 }

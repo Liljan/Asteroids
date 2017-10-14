@@ -17,4 +17,7 @@ public:
 	void InputEvent(int mod, int state, int key);
 	void Update(float dt);
 	void Render();
+
+private:
+	Player m_Player;
 };

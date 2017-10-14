@@ -2,13 +2,12 @@
 
 #include "SDL.h"
 
+#include "glm.hpp"
+
 class Entity {
 public:
 	Entity();
 	virtual ~Entity();
-
-	float GetX() { return m_x; }
-	float GetY() { return m_y; }
 
 	void SetPosition(float x, float y);
 
@@ -16,23 +15,26 @@ public:
 	virtual void Draw(SDL_Renderer* renderer) = 0;
 
 protected:
-	float m_x, m_y;
+	glm::vec2 _position;
 };
 
 class Player : public Entity
 {
 public:
+	Player() {};
 	Player(float x, float y, float speed);
 	~Player() {};
 
-	float GetVx() { return m_vx; }
+	void Init(float x, float y, float maxSpeed);
+
 	void Move(float dt);
 	void Draw(SDL_Renderer* renderer);
 
 private:
-	float m_speed;
-	float m_vx, m_vy;
+	glm::vec2 _velocity;
 
 	// Graphics
 	SDL_Color m_color = { 0,255,0,255 };
+	glm::vec2 m_Points[3];
+	float scale = 50.0f;
 };

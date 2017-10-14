@@ -2,6 +2,8 @@
 
 GameplayState::GameplayState()
 {
+	m_Player = Player();
+	m_Player.Init(300,300,10);
 }
 
 
@@ -53,10 +55,11 @@ void GameplayState::Update(float dt)
 
 void GameplayState::Render()
 {
-	SDL_SetRenderDrawColor(m_Renderer, 0x00, 255, 0x00, 0xFF);
+	SDL_SetRenderDrawColor(m_Renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderClear(m_Renderer);
 
 	// Add graphics to render...
+	m_Player.Draw(m_Renderer);
 
 	// End of graphics to render...
 
