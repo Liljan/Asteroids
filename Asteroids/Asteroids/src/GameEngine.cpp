@@ -1,18 +1,21 @@
 #include "GameEngine.h"
 
-#include "Intro.h"
-#include "GamePlay.h"
+#include "IntroState.h"
+#include "GameplayState.h"
+#include "HighscoreState.h"
 
 GameEngine::GameEngine()
 {
-	m_IntroState = new Intro();
-	m_GameplayState = new Gameplay();
+	m_IntroState = new IntroState();
+	m_GameplayState = new GameplayState();
+	m_HighScoreState = new HighscoreState();
 }
-
 
 GameEngine::~GameEngine()
 {
 	delete m_IntroState;
+	delete m_GameplayState;
+	delete m_HighScoreState;
 }
 
 void GameEngine::Init(const char * title, int x, int y, int width, int height, bool fullScreen)
@@ -41,6 +44,7 @@ void GameEngine::Init(const char * title, int x, int y, int width, int height, b
 
 		m_IntroState->Init(this, m_Renderer);
 		m_GameplayState->Init(this, m_Renderer);
+		m_HighScoreState->Init(this, m_Renderer);
 		m_currentState = m_IntroState;
 
 		SetRunning(true);
@@ -96,7 +100,8 @@ void GameEngine::SetState(State gameState)
 	case State::GAMEPLAY:
 		m_currentState = m_GameplayState;
 		break;
-	case State::HI_SCORE:
+	case State::HIGHSCORE:
+		m_currentState = m_HighScoreState;
 		break;
 	default:
 		break;

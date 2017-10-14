@@ -2,11 +2,11 @@
 
 #include "GameState.h"
 
-class Intro : public GameState
+class HighscoreState : public GameState
 {
 public:
-	Intro();
-	~Intro();
+	HighscoreState();
+	~HighscoreState();
 
 	void Init(GameEngine* gameEngine, SDL_Renderer* renderer);
 	void CleanUp();
@@ -18,3 +18,4 @@ public:
 	void Update(float dt);
 	void Render();
 };
+

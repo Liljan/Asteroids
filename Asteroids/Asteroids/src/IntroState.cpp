@@ -1,33 +1,33 @@
-#include "Intro.h"
+#include "IntroState.h"
 
-Intro::Intro()
+IntroState::IntroState()
 {
 }
 
 
-Intro::~Intro()
+IntroState::~IntroState()
 {
 }
 
-void Intro::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
+void IntroState::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
 {
 	m_GameEngine = gameEngine;
 	m_Renderer = renderer;
 }
 
-void Intro::CleanUp()
+void IntroState::CleanUp()
 {
 }
 
-void Intro::Pause()
+void IntroState::Pause()
 {
 }
 
-void Intro::Resume()
+void IntroState::Resume()
 {
 }
 
-void Intro::InputEvent(int mod, int state, int key)
+void IntroState::InputEvent(int mod, int state, int key)
 {
 	if (state == SDL_KEYDOWN)
 	{
@@ -43,11 +43,11 @@ void Intro::InputEvent(int mod, int state, int key)
 	}
 }
 
-void Intro::Update(float dt)
+void IntroState::Update(float dt)
 {
 }
 
-void Intro::Render()
+void IntroState::Render()
 {
 	SDL_SetRenderDrawColor(m_Renderer, 0x00, 0x00, 0x00, 0xFF);
 	SDL_RenderClear(m_Renderer);

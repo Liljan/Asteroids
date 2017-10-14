@@ -2,11 +2,11 @@
 
 #include "GameState.h"
 
-class Gameplay : public GameState
+class GameplayState : public GameState
 {
 public:
-	Gameplay();
-	~Gameplay();
+	GameplayState();
+	~GameplayState();
 
 	void Init(GameEngine* gameEngine, SDL_Renderer* renderer);
 	void CleanUp();

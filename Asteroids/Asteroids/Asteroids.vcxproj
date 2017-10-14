@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\GameEngine.h" />
+    <ClInclude Include="include\GameplayState.h" />
+    <ClInclude Include="include\GameState.h" />
+    <ClInclude Include="include\HighscoreState.h" />
+    <ClInclude Include="include\IntroState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\GameEngine.cpp" />
+    <ClCompile Include="src\GameplayState.cpp" />
+    <ClCompile Include="src\HighscoreState.cpp" />
+    <ClCompile Include="src\IntroState.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{565FE255-CC1E-48A8-9227-BBDDE46DB2E7}</ProjectGuid>
     <RootNamespace>Asteroids</RootNamespace>
@@ -68,7 +84,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Big Boss\Documents\Asteroids\Asteroids\Asteroids\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Users\Big Boss\Documents\Asteroids\Asteroids\Asteroids\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\Big Boss\Documents\Asteroids\Asteroids\Asteroids\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\Big Boss\Documents\Asteroids\Asteroids\Asteroids\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -129,20 +156,6 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="GamePlay.cpp" />
-    <ClCompile Include="Intro.cpp" />
-    <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="GameEngine.h" />
-    <ClInclude Include="GamePlay.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="Intro.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

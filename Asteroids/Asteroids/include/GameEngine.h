@@ -9,13 +9,13 @@ enum class State
 {
 	INTRO,
 	GAMEPLAY,
-	HI_SCORE
+	HIGHSCORE
 };
 
 class GameState;
-class Intro;
-class Gameplay;
-class HighScore;
+class IntroState;
+class GameplayState;
+class HighscoreState;
 
 class GameEngine
 {
@@ -42,9 +42,9 @@ private:
 	SDL_Renderer* m_Renderer;
 
 	// GameStates
-	Intro* m_IntroState;
-	Gameplay* m_GameplayState;
-	HighScore* m_HighScoreState;
+	IntroState* m_IntroState;
+	GameplayState* m_GameplayState;
+	HighscoreState* m_HighScoreState;
 
 	GameState* m_currentState;
 };
