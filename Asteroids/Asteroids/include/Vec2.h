@@ -5,7 +5,6 @@
 class Vec2
 {
 public:
-
 	Vec2() {};
 	Vec2(float x, float y) { this->x = x; this->y = y; }
 	~Vec2() {};
@@ -22,10 +21,25 @@ public:
 		y += f;
 		return *this;
 	};
+
 	Vec2& operator+=(const Vec2& v)
 	{
 		x += v.x;
 		y += v.y;
+		return *this;
+	};
+
+	Vec2& operator-(const float f)
+	{
+		x -= f;
+		y -= f;
+		return *this;
+	};
+
+	Vec2& operator-=(const Vec2& v)
+	{
+		x -= v.x;
+		y -= v.y;
 		return *this;
 	};
 
