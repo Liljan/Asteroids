@@ -1,45 +1,44 @@
 #pragma once
 
 #include "SDL.h"
-
-#include "glm.hpp"
+#include "Vec2.h"
 
 class Entity {
 public:
 	Entity();
 	virtual ~Entity();
 
-	void SetPosition(float x, float y);
+	void SetPosition(Vec2* p);
 
 	virtual void Move(float dt) = 0;
 	virtual void Draw(SDL_Renderer* renderer) = 0;
 
 protected:
-	glm::vec3 _position;
+	Vec2 m_Position;
 };
 
 class Player : public Entity
 {
 public:
-	Player() {};
+	Player() = default;
 	Player(float x, float y, float speed);
+	Player(Player&) = default;
+	Player& operator=(Player&) = default;
 	~Player() {};
 
 	void Init(float x, float y, float maxSpeed);
-
-	void Rotate(float inX, float inY, float angle, float &outX, float &outY);
 	void Move(float dt);
 	void Draw(SDL_Renderer* renderer);
 
 private:
-	glm::vec2 _velocity;
-	float angle = 0.0f;
+	Vec2 m_Velocity;
+	float m_Angle = 0.0f;
 
 	// Transform: position, rotation
-	glm::mat4 pos_matrix, rot_matrix, transform_matrix;
+	Vec2 m_WorldCoordinates, m_Rotation, m_Translation;
 
 	// Graphics
-	SDL_Color m_color = { 0,255,0,255 };
-	glm::vec4 m_Points[3];
-	float scale = 50.0f;
+	SDL_Color m_Color = { 0,255,0,255 };
+	Vec2 m_Points[3];
+	const float m_Scale = 50.0f;
 };
