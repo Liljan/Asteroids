@@ -25,6 +25,7 @@
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\HighscoreState.h" />
     <ClInclude Include="include\IntroState.h" />
+    <ClInclude Include="include\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Entity.cpp" />

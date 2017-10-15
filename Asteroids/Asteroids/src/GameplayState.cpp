@@ -2,13 +2,13 @@
 
 GameplayState::GameplayState()
 {
-	m_Player = Player();
+	//m_Player = new Player();
 	m_Player.Init(600,300,10);
 }
 
-
 GameplayState::~GameplayState()
 {
+	//delete m_Player;
 }
 
 void GameplayState::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
