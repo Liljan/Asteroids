@@ -27,6 +27,7 @@ public:
 
 	void Init(float x, float y, float maxSpeed);
 
+	void Rotate(float inX, float inY, float angle, float &outX, float &outY);
 	void Move(float dt);
 	void Draw(SDL_Renderer* renderer);
 
