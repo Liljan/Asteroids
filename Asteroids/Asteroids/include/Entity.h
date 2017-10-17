@@ -15,6 +15,8 @@ public:
 
 protected:
 	Vec2 m_Position;
+
+	Mat3x3 m_Scaling, m_Rotation, m_Translation;
 };
 
 class Player : public Entity
@@ -34,11 +36,8 @@ private:
 	Vec2 m_Velocity;
 	float m_Angle = 0.0f;
 
-	// Transform: position, rotation
-	Vec2 m_WorldCoordinates, m_Rotation, m_Translation;
-
 	// Graphics
 	SDL_Color m_Color = { 0,255,0,255 };
 	Vec2 m_Points[3];
-	const float m_Scale = 50.0f;
+	const float m_Length = 50.0f;
 };
