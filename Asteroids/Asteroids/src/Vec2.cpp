@@ -148,10 +148,10 @@ Vec2 & Mat3x3::operator*(const Vec2 & v)
 
 	/*11 12 13	x
 	21 22 23	y
-	31 32 33	0 */
+	31 32 33	1 */
 
-	out.x = v.x*m_11 + v.y*m_12;
-	out.y = v.x*m_21 + v.y*m_22;
+	out.x = v.x*m_11 + v.y*m_12 + m_13;
+	out.y = v.x*m_21 + v.y*m_22 + m_23;
 
 	return out;
 }
@@ -267,12 +267,12 @@ Mat3x3 & Mat3x3::Translation(float x, float y)
 	00 sy ty	m21 m22 m23
 	00 00 01	m31 m32 m33 */
 
-	out.m_11 = 0.0f;
+	out.m_11 = 1.0f;
 	out.m_12 = 0.0f;
 	out.m_13 = x;
 
 	out.m_21 = 0.0f;
-	out.m_22 = 0.0f;
+	out.m_22 = 1.0f;
 	out.m_23 = y;
 
 	out.m_31 = 0.0f;
