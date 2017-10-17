@@ -142,6 +142,20 @@ Mat3x3 & Mat3x3::operator*(const float & f)
 	return *this;
 }
 
+Vec2 & Mat3x3::operator*(const Vec2 & v)
+{
+	Vec2 out;
+
+	/*11 12 13	x
+	21 22 23	y
+	31 32 33	0 */
+
+	out.x = v.x*m_11 + v.y*m_12;
+	out.y = v.x*m_21 + v.y*m_22;
+
+	return out;
+}
+
 Mat3x3 & Mat3x3::operator+(const Vec2 & v)
 {
 	m_13 += v.x;
@@ -191,12 +205,12 @@ const Mat3x3 & Mat3x3::operator=(const Mat3x3 & m)
 	return *this;
 }
 
-inline Mat3x3 & Mat3x3::Unit()
+Mat3x3 & Mat3x3::Unit()
 {
 	return Mat3x3();
 }
 
-inline Mat3x3 & Mat3x3::Rotation(float angle)
+Mat3x3 & Mat3x3::Rotation(float angle)
 {
 	Mat3x3 out;
 
@@ -222,7 +236,7 @@ inline Mat3x3 & Mat3x3::Rotation(float angle)
 	return out;
 }
 
-inline Mat3x3 & Mat3x3::Scaling(float sx, float sy)
+Mat3x3 & Mat3x3::Scaling(float sx, float sy)
 {
 	Mat3x3 out;
 
@@ -245,7 +259,7 @@ inline Mat3x3 & Mat3x3::Scaling(float sx, float sy)
 	return out;
 }
 
-inline Mat3x3 & Mat3x3::Translation(float x, float y)
+Mat3x3 & Mat3x3::Translation(float x, float y)
 {
 	Mat3x3 out;
 
@@ -264,4 +278,6 @@ inline Mat3x3 & Mat3x3::Translation(float x, float y)
 	out.m_31 = 0.0f;
 	out.m_32 = 0.0f;
 	out.m_33 = 1.0f;
+
+	return out;
 }

@@ -38,6 +38,7 @@ public:
 
 	Mat3x3& operator*(const Mat3x3 & m);
 	Mat3x3& operator*(const float & f);
+	Vec2& operator*(const Vec2 & v);
 
 	Mat3x3& operator+(const Vec2 & v);
 	Mat3x3& operator+=(const Vec2 & v);
@@ -46,10 +47,10 @@ public:
 
 	const Mat3x3& operator=(const Mat3x3 & m);
 
-	static inline Mat3x3& Unit();
-	static inline Mat3x3& Rotation(float angle);
-	static inline Mat3x3& Scaling(float sx, float sy);
-	static inline Mat3x3& Translation(float x, float y);
+	static Mat3x3& Unit();
+	static Mat3x3& Rotation(float angle);
+	static Mat3x3& Scaling(float sx, float sy);
+	static Mat3x3& Translation(float x, float y);
 
 	float m_11, m_12, m_13,
 		m_21, m_22, m_23,

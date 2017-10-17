@@ -28,13 +28,17 @@ Player::Player(float x, float y, float speed)
 void Player::Init(float x, float y, float maxSpeed)
 {
 	// setup graphics
-	m_Points[0] = { -m_Scale, m_Scale };
-	m_Points[1] = { m_Scale, m_Scale };
-	m_Points[2] = { 0, -m_Scale };
+	m_Points[0] = { -1.0f, 1.0f };
+	m_Points[1] = { 1.0f, 1.0f };
+	m_Points[2] = { 0.0f, -1.0f };
+
+	m_Scaling = Mat3x3::Scaling(1.f, 1.0f);
 
 	m_Position = { x,y };
+	m_Translation = Mat3x3::Translation(m_Position.x, m_Position.y);
 
 	m_Angle = 0.0f;
+	m_Rotation = Mat3x3::Rotation(m_Angle);
 }
 
 /* Movement
@@ -42,6 +46,11 @@ void Player::Init(float x, float y, float maxSpeed)
 void Player::Move(float dt)
 {
 	m_Angle += dt;
+
+	m_Rotation = Mat3x3::Rotation(m_Angle);
+
+	m_Translation = Mat3x3::Translation(m_Position.x, m_Position.y);
+
 	//_position.x += 80.0f * dt;
 	//m_Rotation = Rotate(&m_Position, m_Angle);
 	//m_WorldCoordinates = m_Rotation + m_Position;
@@ -54,11 +63,11 @@ void Player::Draw(SDL_Renderer * renderer)
 	// Test
 	Vec2 p0, p1, p2;
 
-	p0 = Vec2::Rotate(m_Points[0], m_Angle) + m_Position;
+	/*p0 = Vec2::Rotate(m_Points[0], m_Angle) + m_Position;
 	p1 = Vec2::Rotate(m_Points[1], m_Angle) + m_Position;
-	p2 = Vec2::Rotate(m_Points[2], m_Angle) + m_Position;
+	p2 = Vec2::Rotate(m_Points[2], m_Angle) + m_Position;*/
 
-	SDL_RenderDrawLine(renderer, p0.x, p0.y, p1.x, p1.y);
+	/*SDL_RenderDrawLine(renderer, p0.x, p0.y, p1.x, p1.y);
 	SDL_RenderDrawLine(renderer, p1.x, p1.y, p2.x, p2.y);
-	SDL_RenderDrawLine(renderer, p2.x, p2.y, p0.x, p0.y);
+	SDL_RenderDrawLine(renderer, p2.x, p2.y, p0.x, p0.y);*/
 }
