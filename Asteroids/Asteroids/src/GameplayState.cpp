@@ -43,12 +43,16 @@ void GameplayState::InputEvent(int mod, int state, int key)
 			m_GameEngine->SetState(State::HIGHSCORE);
 			break;
 
-		case SDLK_a:
-			//m_Player->
-			break;
+			/*case SDLK_a:
+				//m_Player->
+				break;
 
-		case SDLK_d:
-			//m_Player->
+			case SDLK_d:
+				//m_Player->
+				break;*/
+
+		case SDLK_w:
+			m_Player.Accelerate();
 			break;
 
 		default:

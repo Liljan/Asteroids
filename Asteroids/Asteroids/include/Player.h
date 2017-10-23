@@ -2,6 +2,11 @@
 
 #include "Entity.h"
 
+enum Direction
+{
+	LEFT, RIGHT
+};
+
 class Player : public Entity
 {
 public:
@@ -15,9 +20,19 @@ public:
 	void Move(float dt);
 	void Draw(SDL_Renderer* renderer);
 
+	// Gameplay commands
+	void Turn(float dt, Direction dir);
+	void Accelerate();
+
 private:
 	Vec2 m_Velocity;
 	float m_Angle = 0.0f;
+
+	// Gameplay
+	float m_turnSpeed = 1.0f; // Rad/s
+
+	float m_CurrentAcceleration;
+	const float m_Slowdown = 0.999f;
 
 	// Graphics
 	SDL_Color m_Color = { 0,255,0,255 };
