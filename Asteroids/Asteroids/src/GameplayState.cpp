@@ -52,7 +52,7 @@ void GameplayState::InputEvent(int mod, int state, int key)
 				break;*/
 
 		case SDLK_w:
-			m_Player.Accelerate();
+			m_Player.GoForward();
 			break;
 
 		default:

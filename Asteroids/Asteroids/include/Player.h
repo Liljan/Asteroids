@@ -22,7 +22,8 @@ public:
 
 	// Gameplay commands
 	void Turn(float dt, Direction dir);
-	void Accelerate();
+	void GoForward();
+	//void Stop();
 
 private:
 	Vec2 m_Velocity;
@@ -31,8 +32,8 @@ private:
 	// Gameplay
 	float m_turnSpeed = 1.0f; // Rad/s
 
-	float m_CurrentAcceleration;
-	const float m_Slowdown = 0.999f;
+	float m_Speed;
+	const float m_Slowdown = 0.99f;
 
 	// Graphics
 	SDL_Color m_Color = { 0,255,0,255 };

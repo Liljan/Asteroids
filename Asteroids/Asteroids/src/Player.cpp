@@ -25,7 +25,7 @@ void Player::Init(float x, float y, float maxSpeed)
 	m_Angle = 0.0f;
 	m_Rotation = Mat3x3::Rotation(m_Angle);
 
-	m_CurrentAcceleration = 0.0f;
+	m_Speed = 0.0f;
 }
 
 
@@ -38,13 +38,13 @@ void Player::Move(float dt)
 	//m_Rotation = Rotate(&m_Position, m_Angle);
 	//m_WorldCoordinates = m_Rotation + m_Position;
 
-	float dx = SDL_cos(m_Angle) * 0.5f * m_CurrentAcceleration * dt*dt;
-	float dy = SDL_sin(m_Angle) * 0.5f * m_CurrentAcceleration * dt*dt;
+	float dx = SDL_cos(m_Angle) * m_Speed * dt;
+	float dy = SDL_sin(m_Angle) * m_Speed *dt;
 
 	m_Position.x += dx;
 	m_Position.y += dy;
 
-	m_CurrentAcceleration *= m_Slowdown;
+	m_Speed *= m_Slowdown; // make this time indifferent
 
 	//m_Rotation = Mat3x3::Rotation(m_Angle);
 	m_Translation = Mat3x3::Translation(m_Position.x, m_Position.y);
@@ -77,8 +77,7 @@ void Player::Turn(float dt, Direction dir)
 		m_Angle -= m_turnSpeed * dt;
 }
 
-void Player::Accelerate()
+void Player::GoForward()
 {
-	m_CurrentAcceleration = 12000.0f;
-	float f = 321;
+	m_Speed = 100.0f;
 }
