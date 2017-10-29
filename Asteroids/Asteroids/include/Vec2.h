@@ -5,7 +5,7 @@
 class Vec2
 {
 public:
-	Vec2() {};
+	Vec2() { x = 0; y = 0; };
 	Vec2(float x, float y) { this->x = x; this->y = y; }
 	~Vec2() {};
 
@@ -50,7 +50,7 @@ public:
 		return *this;
 	};
 
-	static inline Vec2& Rotate(const Vec2& in, float angle)
+	static Vec2& Rotate(const Vec2& in, float angle)
 	{
 		Vec2 out;
 		out.x = cos(angle) * in.x - SDL_sin(angle) * in.y;
@@ -59,11 +59,20 @@ public:
 		return out;
 	}
 
-	static inline Vec2& Scale(const Vec2& in, float scale)
+	static Vec2& Scale(const Vec2& in, float scale)
 	{
 		Vec2 out;
 		out.x *= scale;
 		out.y *= scale;
+
+		return out;
+	}
+
+	static Vec2& Zero()
+	{
+		Vec2 out;
+		out.x = 0.0f;
+		out.y = 0.0f;
 
 		return out;
 	}

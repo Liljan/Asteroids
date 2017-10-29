@@ -3,7 +3,7 @@
 GameplayState::GameplayState()
 {
 	//m_Player = new Player();
-	m_Player.Init(600,300,10);
+	m_Player.Init(&Vec2(300,300));
 }
 
 GameplayState::~GameplayState()

@@ -25,6 +25,7 @@
     <ClInclude Include="include\GameState.h" />
     <ClInclude Include="include\HighscoreState.h" />
     <ClInclude Include="include\IntroState.h" />
+    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +35,7 @@
     <ClCompile Include="src\HighscoreState.cpp" />
     <ClCompile Include="src\IntroState.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{565FE255-CC1E-48A8-9227-BBDDE46DB2E7}</ProjectGuid>
