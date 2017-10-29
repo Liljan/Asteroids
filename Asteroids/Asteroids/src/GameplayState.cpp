@@ -3,13 +3,15 @@
 GameplayState::GameplayState()
 {
 	//m_Player = new Player();
-	m_Player.Init(&Vec2(300, 300));
+	Vector2 startPos = { 300.f,300.f };
+	m_Player.Init(&startPos);
 }
 
 GameplayState::~GameplayState()
 {
 	//delete m_Player;
 }
+
 
 void GameplayState::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
 {
@@ -20,17 +22,21 @@ void GameplayState::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
 
 }
 
+
 void GameplayState::CleanUp()
 {
 }
+
 
 void GameplayState::Pause()
 {
 }
 
+
 void GameplayState::Resume()
 {
 }
+
 
 void GameplayState::InputEvent(int mod, int state, int key)
 {
