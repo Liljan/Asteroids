@@ -51,6 +51,9 @@
     <ClInclude Include="include\Vec2.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\KeyState.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">

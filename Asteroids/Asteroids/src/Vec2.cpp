@@ -39,6 +39,21 @@ Vec2 & Vec2::operator-=(const Vec2 & v)
 	return *this;
 }
 
+Vec2 & Vec2::operator*=(const float & f)
+{
+	x *= f;
+	y *= f;
+
+	return *this;
+}
+
+Vec2 & Vec2::operator*(const float & f)
+{
+	x *= f;
+	y *= f;
+	return *this;
+}
+
 
 const Vec2 & Vec2::operator=(const Vec2 & v)
 {

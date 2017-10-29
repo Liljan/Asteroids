@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include <iostream>
+
 // ---------- Player specific methods---------- //
 
 /* Constructor
@@ -9,8 +11,6 @@ Player::Player(Vec2* pos)
 	m_Position = *pos;
 	m_Velocity = Vec2::Zero();
 	m_Acceleration = Vec2::Zero();
-
-	m_Angle = 0.0f;
 }
 
 
@@ -18,8 +18,8 @@ void Player::Init(Vec2* pos)
 {
 	// setup graphics
 	m_Points[0] = { -50.0f, 50.0f };
-	m_Points[1] = { 50.0f, 50.0f };
-	m_Points[2] = { 0.0f, -50.0f };
+	m_Points[1] = { 50.0f, 0.0f };
+	m_Points[2] = { -50.0f, -50.0f };
 
 	m_Position = *pos;
 	m_Velocity = Vec2::Zero();
@@ -29,14 +29,36 @@ void Player::Init(Vec2* pos)
 }
 
 
+void Player::PreMove(float dt, KeyState * keyState)
+{
+	if (keyState->left)
+		m_Angle -= 6.0f * dt;
+	else if (keyState->right)
+		m_Angle += 6.0f * dt;
+
+	if (keyState->up)
+	{
+		m_Acceleration = Vec2(12000.0f * SDL_cos(m_Angle), 12000.0f *SDL_sin(m_Angle));
+	}
+	else
+	{
+		m_Acceleration = Vec2::Zero();
+	}
+}
+
+
 /* Movement
 ***************************************************/
 void Player::Move(float dt)
 {
-	m_Angle += dt;
-	//_position.x += 80.0f * dt;
-	//m_Rotation = Rotate(&m_Position, m_Angle);
-	//m_WorldCoordinates = m_Rotation + m_Position;
+	m_Velocity += m_Acceleration * dt;
+	m_Position += m_Velocity * dt;
+}
+
+
+void Player::PostMove()
+{
+
 }
 
 
@@ -54,4 +76,6 @@ void Player::Draw(SDL_Renderer * renderer)
 	SDL_RenderDrawLine(renderer, p0.x, p0.y, p1.x, p1.y);
 	SDL_RenderDrawLine(renderer, p1.x, p1.y, p2.x, p2.y);
 	SDL_RenderDrawLine(renderer, p2.x, p2.y, p0.x, p0.y);
+
+	std::cout << m_Velocity.x << " , " << m_Velocity.y << std::endl;
 }

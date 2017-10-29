@@ -15,6 +15,9 @@ void GameplayState::Init(GameEngine * gameEngine, SDL_Renderer * renderer)
 {
 	m_GameEngine = gameEngine;
 	m_Renderer = renderer;
+
+	m_InputKeyState = { false, false,false };
+
 }
 
 void GameplayState::CleanUp()
@@ -43,26 +46,45 @@ void GameplayState::InputEvent(int mod, int state, int key)
 			m_GameEngine->SetState(State::HIGHSCORE);
 			break;
 
-			/*case SDLK_a:
-				//m_Player->
-				break;
+		case SDLK_a:
+			m_InputKeyState.left = true;
+			break;
 
-			case SDLK_d:
-				//m_Player->
-				break;*/
+		case SDLK_d:
+			m_InputKeyState.right = true;
+			break;
 
 		case SDLK_w:
-			//m_Player.GoForward();
+			m_InputKeyState.up = true;
 			break;
 
 		default:
 			break;
 		}
 	}
+	else if (state == SDL_KEYUP)
+	{
+		switch (key)
+		{
+		case SDLK_a:
+			m_InputKeyState.left = false;
+			break;
+
+		case SDLK_d:
+			m_InputKeyState.right = false;
+			break;
+
+		case SDLK_w:
+			m_InputKeyState.up = false;
+			break;
+		}
+	}
+
 }
 
 void GameplayState::Update(float dt)
 {
+	m_Player.PreMove(dt, &m_InputKeyState);
 	m_Player.Move(dt);
 }
 

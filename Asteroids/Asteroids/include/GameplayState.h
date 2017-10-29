@@ -2,6 +2,7 @@
 
 #include "GameState.h"
 #include "Player.h"
+#include "KeyState.h"
 
 class GameplayState : public GameState
 {
@@ -21,4 +22,6 @@ public:
 
 private:
 	Player m_Player;
+
+	KeyState m_InputKeyState;
 };

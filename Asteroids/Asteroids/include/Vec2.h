@@ -15,6 +15,9 @@ public:
 	Vec2& operator-(const float f);
 	Vec2& operator-=(const Vec2 & v);
 
+	Vec2& operator*=(const float & f);
+	Vec2& operator*(const float & f);
+	
 	const Vec2& operator=(const Vec2 & v);
 
 	static Vec2& Rotate(const Vec2& in, float angle);
