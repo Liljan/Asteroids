@@ -10,7 +10,11 @@ Player::Player(Vec2* pos)
 {
 	m_Position = *pos;
 	m_Velocity = Vec2::Zero();
-	m_Acceleration = Vec2::Zero();
+
+	x = pos->x;
+	y = pos->y;
+	vx = 0.0f;
+	vy = 0.0f;
 }
 
 
@@ -26,23 +30,31 @@ void Player::Init(Vec2* pos)
 	m_Acceleration = Vec2::Zero();
 
 	m_Angle = 0.0f;
+
+	x = pos->x;
+	y = pos->y;
+	vx = 0.0f;
+	vy = 0.0f;
 }
 
 
 void Player::PreMove(float dt, KeyState * keyState)
 {
+	float THRUST_MAG = 1.0f;
+	float FRICTION_MAG = 0.02f;
+
 	if (keyState->left)
 		m_Angle -= 6.0f * dt;
 	else if (keyState->right)
 		m_Angle += 6.0f * dt;
 
+	//m_Acceleration = Vec2::Zero();
+
 	if (keyState->up)
 	{
-		m_Acceleration = Vec2(12000.0f * SDL_cos(m_Angle), 12000.0f *SDL_sin(m_Angle));
-	}
-	else
-	{
-		m_Acceleration = Vec2::Zero();
+		//m_Velocity += Vec2(SDL_cos(m_Angle), SDL_sin(m_Angle)) * THRUST_MAG;
+		vx += SDL_cos(m_Angle) * THRUST_MAG;
+		vy += SDL_sin(m_Angle) * THRUST_MAG;
 	}
 }
 
@@ -51,8 +63,9 @@ void Player::PreMove(float dt, KeyState * keyState)
 ***************************************************/
 void Player::Move(float dt)
 {
-	m_Velocity += m_Acceleration * dt;
-	m_Position += m_Velocity * dt;
+	//m_Position += m_Velocity * dt;
+	x += vx * dt;
+	y += vy * dt;
 }
 
 
@@ -66,6 +79,8 @@ void Player::Draw(SDL_Renderer * renderer)
 {
 	SDL_SetRenderDrawColor(renderer, m_Color.r, m_Color.g, m_Color.b, m_Color.a);
 
+	m_Position = Vec2(x, y);
+
 	// Test
 	Vec2 p0, p1, p2;
 
@@ -76,6 +91,4 @@ void Player::Draw(SDL_Renderer * renderer)
 	SDL_RenderDrawLine(renderer, p0.x, p0.y, p1.x, p1.y);
 	SDL_RenderDrawLine(renderer, p1.x, p1.y, p2.x, p2.y);
 	SDL_RenderDrawLine(renderer, p2.x, p2.y, p0.x, p0.y);
-
-	std::cout << m_Velocity.x << " , " << m_Velocity.y << std::endl;
 }

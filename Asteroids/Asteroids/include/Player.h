@@ -23,6 +23,8 @@ private:
 	float m_Speed;
 	float m_RotateSpeed;
 
+	float x, y, vx, vy;
+
 	// Graphics
 	SDL_Color m_Color = { 0,255,0,255 };
 	Vec2 m_Points[3];
