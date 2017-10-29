@@ -13,6 +13,7 @@ Player::Player(Vec2* pos)
 	m_Angle = 0.0f;
 }
 
+
 void Player::Init(Vec2* pos)
 {
 	// setup graphics
@@ -27,6 +28,7 @@ void Player::Init(Vec2* pos)
 	m_Angle = 0.0f;
 }
 
+
 /* Movement
 ***************************************************/
 void Player::Move(float dt)
@@ -36,6 +38,7 @@ void Player::Move(float dt)
 	//m_Rotation = Rotate(&m_Position, m_Angle);
 	//m_WorldCoordinates = m_Rotation + m_Position;
 }
+
 
 void Player::Draw(SDL_Renderer * renderer)
 {

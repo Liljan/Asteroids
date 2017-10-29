@@ -3,7 +3,7 @@
 GameplayState::GameplayState()
 {
 	//m_Player = new Player();
-	m_Player.Init(&Vec2(300,300));
+	m_Player.Init(&Vec2(300, 300));
 }
 
 GameplayState::~GameplayState()
@@ -41,6 +41,18 @@ void GameplayState::InputEvent(int mod, int state, int key)
 
 		case SDLK_SPACE:
 			m_GameEngine->SetState(State::HIGHSCORE);
+			break;
+
+			/*case SDLK_a:
+				//m_Player->
+				break;
+
+			case SDLK_d:
+				//m_Player->
+				break;*/
+
+		case SDLK_w:
+			//m_Player.GoForward();
 			break;
 
 		default:

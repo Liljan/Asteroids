@@ -17,6 +17,7 @@ public:
 
 private:
 	Vec2 m_Acceleration;
+	float m_Speed;
 
 	// Graphics
 	SDL_Color m_Color = { 0,255,0,255 };
